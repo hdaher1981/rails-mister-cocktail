@@ -9,6 +9,10 @@ require 'open-uri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'Cleaning database...'
+Ingredient.destroy_all
+
+
 
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 user_serialized = open(url).read
@@ -19,4 +23,6 @@ ingredients["drinks"].each do |ingredient|
 end
 
 puts "seeded db"
+
+
 
