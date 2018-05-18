@@ -1,26 +1,23 @@
 class DosesController < ApplicationController
-  before_action :set_cocktail, only: [:show, :new]
-
-  def index
-    @doses = Dose.all
-  end
-
-  def show
-
-  end
+  # before_action :set_cocktail, only: [ :new ]
 
   def new
+    @cocktail = Cocktail.find(params[:cocktail_id])
     @dose = Dose.new
   end
 
   def create
+    # raise
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @ingredient = Ingredient.find(params[:dose][:ingredient_id])
     @dose = Dose.new(dose_params)
-    @dose.cocktail = Cocktail.find(params[:cocktail_id])
+    @dose.cocktail = @cocktail
+    @dose.ingredient = @ingredient
 
     if @dose.save
-    redirect_to cocktail_path(@cocktail)
+      redirect_to cocktail_path(@cocktail)
     else
-    render :new
+      render :new
     end
   end
 

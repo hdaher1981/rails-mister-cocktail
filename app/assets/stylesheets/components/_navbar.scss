@@ -8,11 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  #martini {
+    font-size: 30px;
+  }
 }
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 100px;
 }
 
 /* User Avatar */
