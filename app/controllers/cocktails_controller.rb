@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show]
+  before_action :set_cocktail, only: [:show, :destroy]
 
   def index
     @cocktails = Cocktail.all
@@ -22,6 +22,12 @@ class CocktailsController < ApplicationController
     end
 
   end
+
+  def destroy
+    @cocktail.destroy
+    redirect_to cocktails_path, notice: 'Cocktail was successfully deleted.'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
